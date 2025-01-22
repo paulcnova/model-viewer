@@ -1,0 +1,121 @@
+[gd_scene load_steps=4 format=3 uid="uid://bgpy81d2byvnf"]
+
+[ext_resource type="Texture2D" uid="uid://b441peabuugrj" path="res://icon.svg" id="1_hjvc4"]
+
+[sub_resource type="Environment" id="Environment_iavml"]
+background_mode = 1
+background_color = Color(0.054902, 0.305882, 0.560784, 1)
+ambient_light_source = 2
+ambient_light_color = Color(0.00601294, 0.114171, 0.220659, 1)
+tonemap_mode = 3
+ssr_fade_in = 2.01815
+ssr_fade_out = 0.0192366
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_n76rq"]
+albedo_texture = ExtResource("1_hjvc4")
+
+[node name="Boot" type="Node"]
+
+[node name="Origin" type="Node3D" parent="."]
+
+[node name="WorldEnvironment" type="WorldEnvironment" parent="Origin"]
+environment = SubResource("Environment_iavml")
+
+[node name="CSGBox3D" type="CSGBox3D" parent="Origin"]
+material = SubResource("StandardMaterial3D_n76rq")
+
+[node name="Camera3D" type="Camera3D" parent="Origin"]
+transform = Transform3D(0.707107, -0.353553, 0.612372, 0, 0.866025, 0.5, -0.707107, -0.353553, 0.612372, 1.5, 1.29289, 1.5)
+
+[node name="DirectionalLight3D" type="DirectionalLight3D" parent="Origin"]
+transform = Transform3D(0.726148, -0.598858, 0.337753, 0.0854858, 0.566079, 0.819907, -0.682203, -0.566501, 0.462251, 2, 0, 2)
+shadow_enabled = true
+
+[node name="Main Screen UI Margin" type="MarginContainer" parent="."]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/margin_left = 16
+theme_override_constants/margin_top = 16
+theme_override_constants/margin_right = 16
+theme_override_constants/margin_bottom = 16
+
+[node name="Main Screen UI" type="Control" parent="Main Screen UI Margin"]
+layout_mode = 2
+mouse_filter = 1
+
+[node name="TL Button HBox" type="HBoxContainer" parent="Main Screen UI Margin/Main Screen UI"]
+layout_mode = 1
+offset_right = 152.0
+offset_bottom = 31.0
+
+[node name="Main Menu Button" type="Button" parent="Main Screen UI Margin/Main Screen UI/TL Button HBox"]
+layout_mode = 2
+text = "|||"
+
+[node name="Animation Drop Down" type="OptionButton" parent="Main Screen UI Margin/Main Screen UI/TL Button HBox"]
+layout_mode = 2
+selected = 0
+item_count = 1
+popup/item_0/text = "Animation"
+popup/item_0/id = 0
+
+[node name="TR Info VBox" type="VBoxContainer" parent="Main Screen UI Margin/Main Screen UI"]
+layout_mode = 1
+anchors_preset = 1
+anchor_left = 1.0
+anchor_right = 1.0
+grow_horizontal = 0
+
+[node name="Vertices Info" type="Label" parent="Main Screen UI Margin/Main Screen UI/TR Info VBox"]
+layout_mode = 2
+text = "xxx,xxx,xxx : V"
+horizontal_alignment = 2
+
+[node name="Edges Info" type="Label" parent="Main Screen UI Margin/Main Screen UI/TR Info VBox"]
+layout_mode = 2
+text = "xxx,xxx,xxx : E"
+horizontal_alignment = 2
+
+[node name="Faces Info" type="Label" parent="Main Screen UI Margin/Main Screen UI/TR Info VBox"]
+layout_mode = 2
+text = "xxx,xxx,xxx : F"
+horizontal_alignment = 2
+
+[node name="Triangles Info" type="Label" parent="Main Screen UI Margin/Main Screen UI/TR Info VBox"]
+layout_mode = 2
+text = "xxx,xxx,xxx : T"
+horizontal_alignment = 2
+
+[node name="BR Button HBox" type="HBoxContainer" parent="Main Screen UI Margin/Main Screen UI"]
+layout_mode = 1
+anchors_preset = 3
+anchor_left = 1.0
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 0
+grow_vertical = 0
+
+[node name="View Type" type="OptionButton" parent="Main Screen UI Margin/Main Screen UI/BR Button HBox"]
+layout_mode = 2
+selected = 0
+item_count = 4
+popup/item_0/text = "Normal"
+popup/item_0/id = 1
+popup/item_1/text = "Wireframe"
+popup/item_1/id = 0
+popup/item_2/text = "Overdraw"
+popup/item_2/id = 3
+popup/item_3/text = "Unshaded"
+popup/item_3/id = 2
+
+[node name="Shader Select Button" type="Button" parent="Main Screen UI Margin/Main Screen UI/BR Button HBox"]
+layout_mode = 2
+text = "SH"
+
+[node name="Model Select Button" type="Button" parent="Main Screen UI Margin/Main Screen UI/BR Button HBox"]
+layout_mode = 2
+text = "MS"
